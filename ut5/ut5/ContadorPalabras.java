@@ -10,18 +10,25 @@ package com.mycompany.ejercicio_practico.ut5;
  */
 public class ContadorPalabras {
     private String texto;
+    
     public ContadorPalabras(String texto){
         this.texto = texto;
     }
-
-    public int contarPalabras(){
-        String[] palabras = texto.trim().split("\\s+");
-        return palabras.length;
+    
+    public int ContarPalabras(){
+        String cortar = texto.trim();
+        int contador = 1;
+        
+        for (int i = 0; i < cortar.length() -1; i++) {
+            if (cortar.charAt(i) == ' ' && cortar.charAt(i + 1) != ' ' ){
+                contador += 1;
+            }
+        }
+        return contador;
     }
     
     public static void main(String[] args){
         ContadorPalabras cont = new ContadorPalabras("Rodrigo no se calla la boca");
-        System.out.println("El numero de palabras es: " + cont.contarPalabras());
+        System.out.println(cont.ContarPalabras());
     }
 }
-
