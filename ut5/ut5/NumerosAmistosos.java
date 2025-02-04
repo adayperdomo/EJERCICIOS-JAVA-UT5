@@ -9,39 +9,39 @@ package com.mycompany.ejercicio_practico.ut5;
  * @author Alumno
  */
 public class NumerosAmistosos {
-    private int numero1;
-    private int numero2; 
-    public NumerosAmistosos(int numero1, int numero2){
-        this.numero1 = numero1;
-        this.numero2 = numero2;
+    private int num1;
+    private int num2;
+    
+    public NumerosAmistosos(int num1, int num2){
+        this.num1 = num1;
+        this.num2 = num2;
     }
     
-    // Método para calcular la suma de los divisores propios de un número
-    private int sumaDivisoresPropios(int numero) {
-        int suma = 0;
-        for (int i = 1; i <= numero / 2; i++) {
-            if (numero % i == 0) {
-                suma += i;
+    public boolean sonAmistosos(){
+        int sumaDivisores1 = 0;
+        int sumaDivisores2 = 0;
+        
+        for (int i = 1; i <= num1 / 2; i++){
+            if (num1 % i == 0) {
+                sumaDivisores1 += i;
             }
         }
-        return suma;
+        
+        for (int i = 1; i <= num2 / 2; i++) {
+            if (num2 % i == 0) {
+                sumaDivisores2 += i;
+
+            }
+        }
+        return sumaDivisores1 == num2 && sumaDivisores2 == num1;
     }
-
-    // Método para determinar si los números son amistosos
-    public boolean sonAmistosos() {
-        int sumaDivisores1 = sumaDivisoresPropios(numero1);
-        int sumaDivisores2 = sumaDivisoresPropios(numero2);
-
-        return sumaDivisores1 == numero2 && sumaDivisores2 == numero1;
-    }
-
-    // Método main para probar la clase
-    public static void main(String[] args) {
-        NumerosAmistosos numeros = new NumerosAmistosos(220, 284);
-        if (numeros.sonAmistosos()) {
-            System.out.println("Los numeros son amistosos.");
-        } else {
-            System.out.println("Los numeros no son amistosos.");
+    
+    public static void main(String[] args){
+        NumerosAmistosos num = new NumerosAmistosos(220, 284);
+        if (num.sonAmistosos()) {
+            System.out.println("Son amistosos");
+        }else{
+            System.out.println("No son amistosos");
         }
     }
 }
